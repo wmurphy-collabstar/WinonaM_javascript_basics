@@ -58,7 +58,41 @@
   <audio data-key="75" src="sounds/tom.wav"></audio>
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
-<script>
+<script async defer>
+
+  //Plays the sound associated with key when it is pressed
+  function playSound(event){
+    //Gets the audio element associated with the key
+    const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
+    //Gets the div element associated with the key
+    const key = document.querySelector(`.key[data-key="${event.keyCode}"]`);
+    //If the key is not an option on the site, stops the function
+    if (!audio || !key){return;}
+    //Rewinds the audio so we can tap the key many times quickly and replay the audio each time
+    audio.currentTime = 0; 
+    //Plays the audio associated with the key
+    audio.play();
+    //Styles the key to show that it is being pressed
+    key.classList.add("playing");
+
+  }
+  
+  //Removes yellow border from key after it is pressed
+  function removeTransition(event){
+    //Returns if the property name of event is not transform
+    if (event.propertyName !== "transform") {return;}
+    //Removes yellow border once border transition is over
+    event.target.classList.remove("playing");
+  }
+  
+  //Listens for typing of keys in order to play the music
+  document.addEventListener("keyup", playSound);
+  
+  //Get div containing all the keys
+  const keys = document.querySelector(".keys");
+  
+  //Listens for the transition event on all keys
+  keys.addEventListener("transitionend", removeTransition);
 
 </script>
 
