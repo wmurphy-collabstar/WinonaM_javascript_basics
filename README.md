@@ -1,4 +1,4 @@
-## Javascript Drum Kit exercise from WesBos's *Javascript30* course
+# Javascript Drum Kit exercise from WesBos's *Javascript30* course
 
 > A Javascript exercise that adds the functionality of an online drum kit application. This exercise is a subset of the [Full Instrument Kit](https://teasinstrumentkit.netlify.app/)
 
